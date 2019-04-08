@@ -35,3 +35,97 @@
         }
     }
 }
+
+// Menu Overlay
+.menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    opacity: .9;
+    visibility: hidden;
+
+    &.show {
+        visibility: visible;
+    }
+
+    &-branding,
+    &-nav {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+        justify-content: center;
+        float: left;
+        width: 50%;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    &-nav {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        background: darken($primary-color, 5);
+        transform: translateY(-100%);
+        @include easeOut();
+        
+        // Slide-In from top
+        &.show {
+            transform: translateY(0); 
+        }
+    }
+
+    // Branding side
+    &-branding {
+        background: $primary-color;
+        transform: translateY(100%);
+        @include easeOut();
+
+        // Slide-In from bottom
+        &.show {
+            transform: translateY(0);
+        }
+
+        .portrait {
+            width: 250px;
+            height: 250px;
+            background: url('../img/portrait.jpg');
+            border: 3px solid $secondary-color;
+            border-radius: 50%;
+        }
+    }
+
+    .nav-item {
+        transform: translateX(600px);
+        @include easeOut();
+
+        &.show {
+            transform: translateX(0);
+        }
+
+        &.current > a {
+            color: $secondary-color;
+        }
+    }
+
+    .nav-link {
+        display: inline-block;
+        position: relative;
+        padding: 1rem 0;
+        color: #fff;
+        text-decoration: none;
+        font-size: 24px;
+        text-transform: uppercase;
+        @include easeOut();
+
+        &:hover {
+            color: $secondary-color;
+        }
+    }
+}
+
+// Delay each nav item slide by 0.1s
+@for $x from 1 through 4 {
+    .nav-item:nth-child(#{$x}) {
+        transition-delay: $x * 0.1s;
+    }
+}
