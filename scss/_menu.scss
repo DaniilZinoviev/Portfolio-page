@@ -77,12 +77,12 @@
     // Branding side
     &-branding {
         background: $primary-color;
-        transform: translateY(100%);
+        transform: translate3d(0, 100%, 0);
         @include easeOut();
 
         // Slide-In from bottom
         &.show {
-            transform: translateY(0);
+            transform: translate3d(0, 0, 0);
         }
 
         .portrait {
@@ -95,11 +95,11 @@
     }
 
     .nav-item {
-        transform: translateX(600px);
+        transform: translate3d(600px, 0, 0);
         @include easeOut();
 
         &.show {
-            transform: translateX(0);
+            transform: translate3d(0, 0, 0);
         }
 
         &.current > a {
